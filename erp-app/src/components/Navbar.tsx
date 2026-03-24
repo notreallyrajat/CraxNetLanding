@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import Logo from '../assets/CraftsnetWebLogo.png'; // Remove the
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -8,9 +8,15 @@ export default function Navbar() {
     <nav className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl tonal-transition border-b border-outline-variant/10">
       <div className="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-8 h-16 sm:h-20">
         {/* Logo */}
-        <Link to="/" className="text-xl sm:text-2xl font-bold tracking-tighter text-teal-800 font-headline">
-          Editorial ERP
-        </Link>
+      {/* Logo Section */}
+<Link to="/" className="flex items-center gap-2 text-xl sm:text-2xl font-bold tracking-tighter text-teal-800 font-headline">
+  <img 
+    src={Logo} 
+    alt="Editorial ERP Logo" 
+    className="h-16 w-auto" // Adjust height as needed for your navbar
+  />
+  <span>CraxNet ERP</span>
+</Link>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center space-x-8 font-headline text-sm font-semibold tracking-tight">

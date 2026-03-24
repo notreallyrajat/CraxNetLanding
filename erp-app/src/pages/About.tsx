@@ -3,8 +3,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const stats = [
-  { value: '500+', label: 'Organizations' },
-  { value: '12+', label: 'Years Experience' },
+  { value: '10+', label: 'Organizations' },
+  { value: '2+', label: 'Years Experience' },
   { value: '99.9%', label: 'Uptime SLA' },
   { value: '24/7', label: 'Support' },
 ];
@@ -13,7 +13,7 @@ const team = [
   { name: 'Alex Rivera', role: 'CEO & Co-founder' },
   { name: 'Priya Nair', role: 'CTO & Co-founder' },
   { name: 'Marcus Webb', role: 'Head of Product' },
-  { name: 'Lena Hoffmann', role: 'Head of Design' },
+  { name: 'Yash Kumar', role: 'Head of Design' },
 ];
 
 export default function About() {
@@ -54,10 +54,10 @@ export default function About() {
           <div>
             <h2 className="font-headline text-2xl sm:text-3xl font-bold text-on-surface mb-5">Our Story</h2>
             <p className="font-body text-on-surface-variant leading-relaxed mb-4 text-sm sm:text-base">
-              Founded in 2012, Editorial ERP started as a small team of engineers frustrated by bloated, expensive enterprise software. We believed there was a better way — one that combined architectural precision with an editorial eye for clarity.
+              Founded in 2026, CraxNet ERP started as a small team of engineers frustrated by bloated, expensive enterprise software. We believed there was a better way — one that combined architectural precision with an editorial eye for clarity.
             </p>
             <p className="font-body text-on-surface-variant leading-relaxed text-sm sm:text-base">
-              Today, we serve 500+ organizations across education, logistics, finance, and healthcare — helping them run leaner, smarter operations every day.
+              Today, we serve 10+ organizations across education, logistics, finance, and healthcare — helping them run leaner, smarter operations every day.
             </p>
           </div>
           <div className="bg-surface-container-low rounded-[2rem] p-8 sm:p-10 flex flex-col gap-4">

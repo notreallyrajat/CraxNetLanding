@@ -3,18 +3,50 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const contactInfo = [
-  { icon: 'location_on', label: 'Address', value: '123 Enterprise Ave, Suite 400, San Francisco, CA 94105' },
-  { icon: 'mail', label: 'Email', value: 'hello@editorialerp.com' },
-  { icon: 'phone', label: 'Phone', value: '+1 (800) 555-0199' },
-  { icon: 'schedule', label: 'Hours', value: 'Mon–Fri, 9am–6pm PST' },
+  { icon: 'location_on', label: 'Address', value: 'Kudi Bhagtasni Basni First phase Jodhpur' },
+  { icon: 'mail', label: 'Email', value: 'chhanganirajat72@gmail.com' },
+  { icon: 'phone', label: 'Phone', value: '+91 9351182957' },
+  { icon: 'schedule', label: 'Hours', value: 'Mon–Fri, 9am–8pm IST' },
 ];
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    alert("Message sent! We'll get back to you within 24 hours.");
+    setIsSubmitting(true);
+
+    // Prepare data for Web3Forms
+    const formData = {
+      ...form,
+      access_key: "aade6238-57a3-4fa6-8700-5731aed21500",    // 👈 ADD YOUR KEY HERE
+      from_name: "Editorial ERP Contact Form",
+    };
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert("Message sent! We'll get back to you within 24 hours.");
+        setForm({ name: '', email: '', subject: '', message: '' }); // Reset form
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Network error. Please check your internet connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -46,7 +78,7 @@ export default function Contact() {
                 <div className="flex flex-col gap-2">
                   <label htmlFor="c-name" className="font-headline font-semibold text-sm text-on-surface">Name</label>
                   <input
-                    id="c-name" type="text" required placeholder="Jane Smith"
+                    id="c-name" name="name" type="text" required placeholder="Jane Smith"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     className="bg-surface-container border border-outline-variant rounded-xl px-4 py-3 font-body text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm"
@@ -55,7 +87,7 @@ export default function Contact() {
                 <div className="flex flex-col gap-2">
                   <label htmlFor="c-email" className="font-headline font-semibold text-sm text-on-surface">Email</label>
                   <input
-                    id="c-email" type="email" required placeholder="jane@company.com"
+                    id="c-email" name="email" type="email" required placeholder="jane@company.com"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     className="bg-surface-container border border-outline-variant rounded-xl px-4 py-3 font-body text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm"
@@ -65,7 +97,7 @@ export default function Contact() {
               <div className="flex flex-col gap-2">
                 <label htmlFor="c-subject" className="font-headline font-semibold text-sm text-on-surface">Subject</label>
                 <input
-                  id="c-subject" type="text" required placeholder="How can we help?"
+                  id="c-subject" name="subject" type="text" required placeholder="How can we help?"
                   value={form.subject}
                   onChange={(e) => setForm({ ...form, subject: e.target.value })}
                   className="bg-surface-container border border-outline-variant rounded-xl px-4 py-3 font-body text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm"
@@ -74,7 +106,7 @@ export default function Contact() {
               <div className="flex flex-col gap-2">
                 <label htmlFor="c-message" className="font-headline font-semibold text-sm text-on-surface">Message</label>
                 <textarea
-                  id="c-message" rows={5} required placeholder="Tell us more..."
+                  id="c-message" name="message" rows={5} required placeholder="Tell us more..."
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className="bg-surface-container border border-outline-variant rounded-xl px-4 py-3 font-body text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none text-sm"
@@ -82,9 +114,12 @@ export default function Contact() {
               </div>
               <button
                 type="submit"
-                className="primary-gradient text-on-primary px-8 py-4 rounded-xl font-headline font-bold text-base hover:shadow-lg hover:shadow-primary/20 transition-all"
+                disabled={isSubmitting}
+                className={`primary-gradient text-on-primary px-8 py-4 rounded-xl font-headline font-bold text-base transition-all ${
+                  isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-lg hover:shadow-primary/20 hover:scale-[1.02]'
+                }`}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
 

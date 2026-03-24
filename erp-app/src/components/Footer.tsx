@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="col-span-2">
-            <div className="font-headline font-bold text-lg text-slate-900 mb-4 sm:mb-6">Editorial ERP</div>
+            <div className="font-headline font-bold text-lg text-slate-900 mb-4 sm:mb-6">CraxNet ERP</div>
             <p className="font-body text-xs text-slate-500 max-w-xs mb-6 sm:mb-8">
               Redefining enterprise resource planning with architectural precision and editorial clarity.
             </p>
@@ -54,7 +54,7 @@ export default function Footer() {
 
         <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-slate-200/10 text-center">
           <p className="font-body text-xs text-slate-500">
-            © 2024 Editorial ERP Excellence. All rights reserved.
+            © 2026  CraxNet ERP. All rights reserved.
           </p>
         </div>
       </div>
