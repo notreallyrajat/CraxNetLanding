@@ -6,11 +6,11 @@
   "workspaces": [
     "erp-app"
   ],
- "scripts": {
-    "dev": "vite",
-    "build": "tsc -b tsconfig.json && vite build",
-    "preview": "vite preview",
-    "start": "vite"
+"scripts": {
+    "dev": "vite --config erp-app/vite.config.ts",
+    "build": "tsc -b erp-app/tsconfig.json && vite build --config erp-app/vite.config.ts",
+    "preview": "vite preview --config erp-app/vite.config.ts",
+    "start": "vite --config erp-app/vite.config.ts"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",
